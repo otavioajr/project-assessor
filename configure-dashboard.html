@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .icon {
+            font-size: 24px;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 18px;
+        }
+        
+        .card-info {
+            font-size: 13px;
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        .uuid {
+            background: #edf2f7;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 10px;
+            word-break: break-all;
+            color: #4a5568;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #c6f6d5;
+            border: 2px solid #48bb78;
+            color: #22543d;
+            display: block;
+        }
+        
+        .status.info {
+            background: #bee3f8;
+            border: 2px solid #4299e1;
+            color: #2c5282;
+            display: block;
+        }
+        
+        .button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .current-user {
+            background: #fef5e7;
+            border: 2px solid #f39c12;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #7d6608;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Configurar Dashboard</h1>
+        <p class="subtitle">Escolha um usuário para acessar o dashboard com as novas categorias</p>
+        
+        <div id="currentUser" class="current-user" style="display: none;">
+            <strong>✅ Usuário atual:</strong> <span id="currentUserId"></span>
+        </div>
+        
+        <div class="card" onclick="setUser('33763842-47f2-47fd-b02a-9009848720c4')">
+            <div class="card-header">
+                <span class="icon">👤</span>
+                <div class="card-title">Usuário Principal</div>
+            </div>
+            <div class="card-info">
+                📱 Telefone: <strong>+5511999999999</strong><br>
+                📊 Status: Usuário de teste principal<br>
+                ✅ 16 categorias configuradas
+            </div>
+            <div class="uuid">33763842-47f2-47fd-b02a-9009848720c4</div>
+        </div>
+        
+        <div class="card" onclick="setUser('c697c9c1-d0eb-49c6-ab0f-340e48b95c0b')">
+            <div class="card-header">
+                <span class="icon">📱</span>
+                <div class="card-title">Usuário WhatsApp 1</div>
+            </div>
+            <div class="card-info">
+                📱 Telefone: <strong>+5511944444444</strong><br>
+                📊 Status: Teste via WhatsApp webhook<br>
+                ✅ Com transação de teste (R$ 40,00)
+            </div>
+            <div class="uuid">c697c9c1-d0eb-49c6-ab0f-340e48b95c0b</div>
+        </div>
+        
+        <div class="card" onclick="setUser('660e8400-e29b-41d4-a716-446655440001')">
+            <div class="card-header">
+                <span class="icon">👨‍💻</span>
+                <div class="card-title">Usuário Demo</div>
+            </div>
+            <div class="card-info">
+                📱 Telefone: <strong>+5511988888888</strong><br>
+                📧 Email: demo@assessor.local<br>
+                📊 Status: Conta demonstração
+            </div>
+            <div class="uuid">660e8400-e29b-41d4-a716-446655440001</div>
+        </div>
+        
+        <button class="button" onclick="openDashboard()">
+            🚀 Abrir Dashboard
+        </button>
+        
+        <div id="status" class="status"></div>
+    </div>
+    
+    <script>
+        function getCurrentUser() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                document.getElementById('currentUser').style.display = 'block';
+                document.getElementById('currentUserId').textContent = userId;
+            }
+        }
+        
+        function setUser(userId) {
+            localStorage.setItem('userId', userId);
+            
+            const status = document.getElementById('status');
+            status.className = 'status success';
+            status.innerHTML = `
+                <strong>✅ Usuário configurado com sucesso!</strong><br>
+                UUID: ${userId}<br>
+                <small>Clique em "Abrir Dashboard" para continuar</small>
+            `;
+            
+            getCurrentUser();
+        }
+        
+        function openDashboard() {
+            const userId = localStorage.getItem('userId');
+            if (!userId) {
+                const status = document.getElementById('status');
+                status.className = 'status info';
+                status.innerHTML = `
+                    <strong>⚠️ Nenhum usuário selecionado</strong><br>
+                    Por favor, clique em um dos cartões acima para escolher um usuário.
+                `;
+                return;
+            }
+            
+            // Abrir dashboard
+            window.location.href = 'http://localhost:5173';
+        }
+        
+        // Verificar usuário atual ao carregar
+        getCurrentUser();
+    </script>
+</body>
+</html>

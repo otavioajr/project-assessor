@@ -1,0 +1,56 @@
+{
+  "name": "assessor-backend",
+  "version": "1.0.0",
+  "description": "Backend para Assessor Financeiro + Agenda via WhatsApp",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "migrate": "node scripts/migrate.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "whatsapp",
+    "finance",
+    "assistant",
+    "lgpd"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "fastify": "^4.25.2",
+    "@fastify/cors": "^8.5.0",
+    "@fastify/helmet": "^11.1.1",
+    "@fastify/rate-limit": "^9.1.0",
+    "@fastify/cookie": "^9.3.1",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "zod": "^3.22.4",
+    "date-fns": "^3.0.6",
+    "date-fns-tz": "^3.0.0",
+    "node-cron": "^3.0.3",
+    "axios": "^1.6.5",
+    "openai": "^4.24.1",
+    "pdfkit": "^0.14.0",
+    "csv-stringify": "^6.4.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.7",
+    "@types/pg": "^8.10.9",
+    "@types/node-cron": "^3.0.11",
+    "@types/pdfkit": "^0.13.4",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.1.3"
+  }
+}
